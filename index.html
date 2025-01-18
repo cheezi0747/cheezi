@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <title>Cheezi.se</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .grid-item {
+            width: 100%;
+            height: 40px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container"></div>
+
+    <script>
+        // List of images
+        var images = [
+            'cheezi-3d-print.png', 'cheezi-autumn.png', 'cheezi-christmas.png', 'cheezi-cold.png',
+            'cheezi-decibel.png', 'cheezi-defqon.png', 'cheezi-ecl.png',
+            'Cheezi-football.png', 'cheezi-gang.png', 'cheezi-git.png',
+            'cheezi-hammer.png', 'cheezi-headphones.png', 'cheezi-italy.png',
+            'cheezi-mastermind.png', 'cheezi-new-year.png', 'cheezi-prpsct.png', 'cheezi-spoon.png',
+            'cheezi-supercharged.png', 'Cheezi-vacation.png', 'cheezi-work-bg.png', 'cheezi-work.png',
+            'cheezi.png'
+        ];
+
+        function populateGrid() {
+            const container = document.querySelector('.grid-container');
+            container.innerHTML = '';
+            const numItems = Math.floor(window.innerWidth / 100) * 1000;
+
+            for (let i = 0; i < numItems; i++) {
+                const item = document.createElement('div');
+                item.className = 'grid-item';
+                const randomImage = images[Math.floor(Math.random() * images.length)];
+                item.style.backgroundImage = 'url("images/' + randomImage + '")';
+                container.appendChild(item);
+            }
+        }
+        window.onload = populateGrid;
+        window.onresize = populateGrid;
+    </script>
+</body>
+
+</html>
